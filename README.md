@@ -92,7 +92,13 @@
   </tbody>
 </table>
 
-<p>Para mais detalhes, consulte a collection completa em <strong>/docs/banco-digital-collection.json</strong>.</p>
+## 📦 Coleção Postman
+
+Você pode importar a coleção de testes diretamente no Postman:
+
+👉 [Clique aqui para baixar a coleção do Postman](https://github.com/anacristinademoura/banco-digital-jpa/blob/master/docs/banco-digital-collection.json)
+
+Ou acesse o arquivo dentro da pasta `/docs/banco-digital-collection.json`.
 
 <hr>
 
@@ -123,6 +129,3 @@
 <p><a href="https://www.linkedin.com/in/anacristinadmoura/" target="_blank">LinkedIn</a></p>
 
 <hr>
-
-<h3>📦 Coleção Postman disponível em:</h3>
-<p><a href="docs/banco-digital-collection.json">/docs/banco-digital-collection.json</a></p>
