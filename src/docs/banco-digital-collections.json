@@ -1,0 +1,776 @@
+{
+	"info": {
+		"_postman_id": "74def01c-2586-47e7-8449-c81774e5a199",
+		"name": "Banco Digital API",
+		"description": "Esta API simula um banco digital com cadastro de clientes, criação de contas, emissão de cartões e contratação de seguros.  \n  \nTecnologias: Spring Boot, JPA, H2.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46075733",
+		"_collection_link": "https://anacristina-9454255.postman.co/workspace/Banco-Digital-API~0f760516-c5a5-43f3-8aa5-a839824a046a/collection/46075733-74def01c-2586-47e7-8449-c81774e5a199?action=share&source=collection_link&creator=46075733"
+	},
+	"item": [
+		{
+			"name": "1- Cliente",
+			"item": [
+				{
+					"name": "adicionar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\":\"Ana Cristina\",\r\n    \"cpf\":\"12345678901\",\r\n    \"tipoCliente\": \"PREMIUM\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/cliente/add",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cliente",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/cliente/get/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cliente",
+								"get",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "editar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\" : \"Ana\",\r\n    \"cpf\" : \"12345678955\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/cliente/editar/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cliente",
+								"editar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/cliente/delete/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cliente",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/cliente/listAll",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cliente",
+								"listAll"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints relacionados ao cadastro e manutenção de clientes."
+		},
+		{
+			"name": "2 - Conta",
+			"item": [
+				{
+					"name": "criar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"tipo\": \"CORRENTE\",\r\n  \"idCliente\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/conta/criar",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"conta",
+								"criar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "depositar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/conta/depositar?idConta=1&valor=500.0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"conta",
+								"depositar"
+							],
+							"query": [
+								{
+									"key": "idConta",
+									"value": "1"
+								},
+								{
+									"key": "valor",
+									"value": "500.0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "detalhes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/conta/detalhes/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"conta",
+								"detalhes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "saldo",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"tipo\": \"corrente\",\r\n  \"idCliente\": 1\r\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/conta/saldo?idConta=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"conta",
+								"saldo"
+							],
+							"query": [
+								{
+									"key": "idConta",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sacar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"tipo\": \"corrente\",\r\n  \"idCliente\": 1\r\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/conta/sacar?idConta=1&valor=100.0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"conta",
+								"sacar"
+							],
+							"query": [
+								{
+									"key": "idConta",
+									"value": "1"
+								},
+								{
+									"key": "valor",
+									"value": "100.0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transferir",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/conta/transferir?idOrigem=1&idDestino=2&valor=100.0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"conta",
+								"transferir"
+							],
+							"query": [
+								{
+									"key": "idOrigem",
+									"value": "1"
+								},
+								{
+									"key": "idDestino",
+									"value": "2"
+								},
+								{
+									"key": "valor",
+									"value": "100.0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/conta/delete?idConta=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"conta",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "idConta",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "transferir por pix",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"idContaDestino\": 2,\r\n  \"valor\": 100.0\r\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/conta/1/pix",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"conta",
+								"1",
+								"pix"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "taxa de manutenção (conta corrente)",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/conta/1/manutencao",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"conta",
+								"1",
+								"manutencao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "taxa de rendimento (conta poupança)",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/conta/1/rendimento",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"conta",
+								"1",
+								"rendimento"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints para criação de contas, movimentações financeiras e informações da conta."
+		},
+		{
+			"name": "3 - Cartão",
+			"item": [
+				{
+					"name": "emitir cartão",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"idConta\": 1,\r\n  \"tipo\": \"CREDITO\",\r\n  \"senha\" : \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/cartao/emitir",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cartao",
+								"emitir"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "detalhes",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"tipo\": \"corrente\",\r\n  \"idCliente\": 1\r\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/cartao/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cartao",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pagar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"valor\": 150.0,\r\n  \"senha\": \"98745\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/cartao/3/pagamento",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cartao",
+								"3",
+								"pagamento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "status (ativar/desativar)",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ativo\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/cartao/1/status",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cartao",
+								"1",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "alterar senha",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"senhaAtual\": \"1234\",\r\n  \"novaSenha\": \"5678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/cartao/1/senha",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cartao",
+								"1",
+								"senha"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "alterar limite",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"novoLimite\": 3000.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/cartao/1/limite",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cartao",
+								"1",
+								"limite"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obter fatura",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/cartao/1/fatura",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cartao",
+								"1",
+								"fatura"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pagar fatura",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/cartao/1/fatura/pagar",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cartao",
+								"1",
+								"fatura",
+								"pagar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "alterar limite diário (débito)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"novoLimite\": 1500.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/cartao/1/limite-diario",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cartao",
+								"1",
+								"limite-diario"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints para emissão e uso de cartões de crédito ou débito."
+		},
+		{
+			"name": "4 - Seguro",
+			"item": [
+				{
+					"name": "contratar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"tipo\": \"ROUBO_FRAUDE\",\r\n  \"dataInicio\": \"2025-07-13\",\r\n  \"dataFim\": \"2025-12-31\",\r\n  \"valor\": 49.99\r\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/seguro/cartao/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"seguro",
+								"cartao",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/seguro/cartao/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"seguro",
+								"cartao",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "detalhar um",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/seguro/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"seguro",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cancelar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/seguro/1/cancelar",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"seguro",
+								"1",
+								"cancelar"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints para contratação e gerenciamento de seguros vinculados a cartões."
+		}
+	]
+}
