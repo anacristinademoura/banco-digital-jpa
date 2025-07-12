@@ -97,7 +97,7 @@
 
 👉 [Clique aqui para baixar a coleção do Postman](https://github.com/anacristinademoura/banco-digital-jpa/blob/master/docs/banco-digital-collection.json)
 
-<p>Ou acesse o arquivo dentro da pasta</p> `/docs/banco-digital-collection.json`.
+Ou acesse o arquivo dentro da pasta `/docs/banco-digital-collection.json`.
 
 <hr>
 
